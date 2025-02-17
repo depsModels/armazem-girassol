@@ -1,5 +1,5 @@
 # Armazem Girassol - E-commerce de Produtos Naturais
-
+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
 ## Descrição do Projeto
 
 Armazem Girassol é um e-commerce especializado em produtos naturais, oferecendo uma experiência de compra intuitiva e moderna. O projeto foi desenvolvido com foco na usabilidade, design responsivo e facilidade de navegação.
