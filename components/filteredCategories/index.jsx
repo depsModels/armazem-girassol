@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './styles.module.css';
+import { capitalizeWords } from '@/lib/formatText';
 
 export default function FilteredCategories({ categories, selectedCategories, onCategoryChange }) {
   return (
@@ -14,7 +15,7 @@ export default function FilteredCategories({ categories, selectedCategories, onC
             checked={selectedCategories.includes(category.id)}
             onChange={() => onCategoryChange(category.id)}
           />
-          <label htmlFor={`category-${category.id}`}>{category.nome}</label>
+          <label htmlFor={`category-${category.id}`}>{capitalizeWords(category.nome)}</label>
         </div>
       ))}
     </div>

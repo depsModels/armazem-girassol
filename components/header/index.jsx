@@ -47,7 +47,13 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href='/'>
-            <Image src={logoImg} alt='Flor logo' priority />
+            <Image 
+              src={logoImg} 
+              alt='Flor logo'
+              width={150}
+              height={100}
+              loading="eager"
+            />
           </Link>
           <Link href='/' className={styles.title}>
             <h2>Armazem Girassol</h2>

@@ -1,8 +1,39 @@
 {
   "name": "armazem-girassol",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
+  "description": "Armazem Girassol - E-Commerce desenvolvido pela DEPS",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "keywords": [
+    "armazem girassol",
+    "ecommerce",
+    "loja virtual",
+    "vendas",
+    "produtos naturais",
+    "charqueadas",
+    "stockdeps",
+    "depsmodels"
+  ],
+  "authors": [
+    {
+      "name": "Elano Tavares do Nascimento",
+      "email": "elano.tavares.ncs@gmail.com",
+      "homepage": "https://depsmodels.com",
+      "role": "Developer"
+  },
+  {
+      "name": "Miguel Leonardo Strapazon Lewandowski",
+      "email": "miguelstrapazonl@gmail.com",
+      "homepage": "https://depsmodels.com",
+      "role": "Developer"
+  },
+  {
+      "name": "Raul Lize Teixeira",
+      "email": "raullizeteixeira@gmail.com",
+      "homepage": "https://depsmodels.com",
+      "role": "Developer"
+  }
+],
+"scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

@@ -4,6 +4,8 @@
   align-items: center;
   gap: 0.5rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .pageButton {
@@ -14,6 +16,10 @@
   border-radius: 0.25rem;
   cursor: pointer;
   transition: all 0.2s;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pageButton:hover:not(:disabled) {
@@ -29,4 +35,24 @@
 .pageButton.active {
   background: #05603c;
   color: white;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .pageButton {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pageButton {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.85rem;
+    min-width: 30px;
+  }
 }

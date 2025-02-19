@@ -67,6 +67,16 @@
   font-weight: 500;
 }
 
+.noProducts {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+  background-color: var(--sand-beige);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .categoriesTitle h2 {

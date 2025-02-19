@@ -28,9 +28,12 @@ function PrevArrow(props) {
 }
 
 export default function CarouselProducts({ products }) {
+  // Filtrar produtos com quantidade disponível
+  const availableProducts = products.filter(product => product.quantidade > 0);
+
   const sliderSettings = {
     dots: true,
-    infinite: products.length > 4,
+    infinite: availableProducts.length > 4,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -64,14 +67,15 @@ export default function CarouselProducts({ products }) {
   return (
     <div className={styles.sliderContainer}>
       <Slider {...sliderSettings} className={styles.slider}>
-        {products.map(product => (
+        {availableProducts.map(product => (
           <div key={product.id} className={styles.sliderItem}>
             <ProductItem
               id={product.id}
               nome={product.nome}
               preco={product.preco}
               image={product.imagem}
-              unidade_medida={product.unidadeMedida}
+              unidade_medida={product.unidade_medida}
+              quantidade={product.quantidade}
             />
           </div>
         ))}

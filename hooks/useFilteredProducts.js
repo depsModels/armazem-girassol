@@ -1,28 +1,43 @@
 import { useMemo } from 'react';
 
-export function useFilteredProducts(products, search, priceRange, selectedCategories, sortOrder) {
+export function useFilteredProducts(products, searchTerm, priceRange, selectedCategories, sortOrder) {
   return useMemo(() => {
-    if (!products || products.length === 0) return [];
-    
-    const lowerCaseSearch = search.toLowerCase();
+    let filtered = [...products];
 
-    let filtered = products.filter((p) => {
-      const matchesSearch = p.nome.toLowerCase().includes(lowerCaseSearch);
-      const matchesPrice = p.preco >= priceRange.min && p.preco <= priceRange.max;
-      
-      // Se não houver categorias selecionadas ou se o produto pertencer a uma das categorias selecionadas
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(p.idCategoria);
-
-      return matchesSearch && matchesPrice && matchesCategory;
-    });
-
-    // Ordenação por preço
-    if (sortOrder === 'asc') {
-      filtered.sort((a, b) => a.preco - b.preco);
-    } else if (sortOrder === 'desc') {
-      filtered.sort((a, b) => b.preco - a.preco);
+    // Aplicar filtros
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(product =>
+        product.nome.toLowerCase().includes(searchLower)
+      );
     }
 
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter(product =>
+        selectedCategories.includes(product.idCategoria)
+      );
+    }
+
+    filtered = filtered.filter(product =>
+      product.preco >= priceRange.min && product.preco <= priceRange.max
+    );
+
+    // Ordenar por disponibilidade primeiro
+    filtered.sort((a, b) => {
+      // Primeiro critério: disponibilidade
+      if (a.quantidade === 0 && b.quantidade > 0) return 1;
+      if (a.quantidade > 0 && b.quantidade === 0) return -1;
+      
+      // Segundo critério: preço
+      if (sortOrder === 'asc') {
+        return a.preco - b.preco;
+      } else if (sortOrder === 'desc') {
+        return b.preco - a.preco;
+      }
+      
+      return 0;
+    });
+
     return filtered;
-  }, [products, search, priceRange.min, priceRange.max, selectedCategories, sortOrder]);
+  }, [products, searchTerm, priceRange, selectedCategories, sortOrder]);
 }

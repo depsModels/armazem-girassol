@@ -34,22 +34,13 @@ import { NextResponse } from 'next/server';
  */
 export async function GET() {
   try {
-    console.log('API: Iniciando busca de produtos por categoria...');
-    // Busca os produtos do banco de dados
     const products = await getTopProductsByCategory();
-    console.log('API: Produtos encontrados:', products);
-    
-    // Retorna os produtos em formato JSON
+
     return NextResponse.json(products);
   } catch (error) {
-    // Log do erro para debugging
     console.error('API Error fetching products by category:', error);
     console.error('API Error stack:', error.stack);
     
-    // Retorna um erro 500 para o cliente
-    return NextResponse.json(
-      { error: 'Failed to fetch products', details: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch products', details: error.message }, { status: 500 });
   }
 }

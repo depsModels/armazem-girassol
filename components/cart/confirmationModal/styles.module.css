@@ -1,18 +1,18 @@
-.overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 2200;
   padding: 1rem;
 }
 
-.checkoutContainer {
+.modalContent {
   background: white;
   border-radius: 1rem;
   padding: 1.5rem;
@@ -25,7 +25,7 @@
   animation: slideIn 0.3s ease-out;
 }
 
-.checkoutHeader {
+.modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@
   border-bottom: 2px solid #05603c;
 }
 
-.checkoutHeader h2 {
+.modalHeader h2 {
   color: #05603c;
   margin: 0;
   font-size: 1.25rem;
@@ -59,90 +59,82 @@
   transform: rotate(90deg);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.modalBody {
+  margin-bottom: 1.5rem;
 }
 
-.form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.modalBody h3 {
   color: #05603c;
-  font-weight: 500;
-  font-size: 0.9rem;
+  margin: 1.25rem 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-.form input,
-.form select {
-  padding: 0.75rem;
-  border: 2px solid rgba(5, 96, 60, 0.2);
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  transition: border-color 0.2s ease;
-}
-
-.form input:focus,
-.form select:focus {
-  outline: none;
-  border-color: #05603c;
-}
-
-.form input::placeholder {
-  color: #999;
-}
-
-.select {
-  background-color: white;
-  cursor: pointer;
-}
-
-.radioGroup {
+.productList {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
   flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.radioGroup label {
-  flex-direction: row;
+.productItem {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  border: 2px solid rgba(5, 96, 60, 0.2);
+  background-color: #f8f9fa;
   border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  gap: 0.75rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.radioGroup label.active {
-  background-color: rgba(5, 96, 60, 0.1);
-  border-color: #05603c;
-}
-
-.radioGroup input[type="radio"] {
-  margin: 0;
-  width: 1.25rem;
-  height: 1.25rem;
-  padding: 0;
-}
-
-.errorMessage {
-  color: #dc3545;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
+.productItem > span:first-child {
+  flex: 1;
+  min-width: 200px;
 }
 
 .deliveryFee {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-top: 1px dashed #05603c;
   color: #05603c;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
-.checkoutFooter {
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  border-top: 2px solid #05603c;
+  color: #05603c;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.customerInfo {
+  background-color: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.customerInfo p {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.customerInfo strong {
+  color: #05603c;
+  margin-right: 0.5rem;
+}
+
+.modalFooter {
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
@@ -151,7 +143,7 @@
 }
 
 .cancelButton,
-.whatsappButton {
+.confirmButton {
   padding: 0.75rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -171,18 +163,13 @@
   border: 2px solid #05603c;
 }
 
-.whatsappButton {
+.confirmButton {
   background-color: #25D366;
   color: white;
   border: none;
 }
 
-.whatsappButton:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.whatsappButton:not(:disabled):hover {
+.confirmButton:hover {
   background-color: #128C7E;
 }
 
@@ -203,42 +190,38 @@
 
 /* Responsive Styles */
 @media (min-width: 768px) {
-  .checkoutContainer {
+  .modalContent {
     padding: 2rem;
   }
 
-  .checkoutHeader h2 {
+  .modalHeader h2 {
     font-size: 1.5rem;
   }
 
-  .form label {
+  .modalBody h3 {
+    font-size: 1.2rem;
+  }
+
+  .productItem {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .deliveryFee,
+  .customerInfo p {
     font-size: 1rem;
   }
 
-  .form input,
-  .form select {
-    font-size: 1rem;
+  .totalPrice {
+    font-size: 1.25rem;
   }
 
-  .radioGroup {
-    flex-direction: row;
-    margin-bottom: 1rem;
-  }
-
-  .radioGroup label {
-    flex: 1;
-  }
-
-  .deliveryFee {
-    font-size: 0.9rem;
-  }
-
-  .checkoutFooter {
+  .modalFooter {
     flex-direction: row;
   }
 
   .cancelButton,
-  .whatsappButton {
+  .confirmButton {
     width: auto;
     flex: 1;
     font-size: 1rem;

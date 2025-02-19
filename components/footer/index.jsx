@@ -15,11 +15,9 @@ export default function Footer() {
               src="/assets/images/logoWithoutBg.png" 
               alt="Armazém Girassol Logo" 
               fill
+              sizes="(max-width: 150px) 100vw, 150px"
               style={{ objectFit: 'contain' }}
-              priority
-              onError={(e) => {
-                console.error('Image load error', e);
-              }}
+              loading="lazy"
             />
           </div>
           <p className={styles.brandTagline}>

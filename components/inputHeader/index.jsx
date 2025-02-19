@@ -127,7 +127,7 @@ export default function InputHeader() {
                 <div className={styles.suggestionContent}>
                   <div className={styles.imageContainer}>
                     <Image
-                      src={product.imagem || '/noImage.png'}
+                      src={product.imagem || '/assets/images/noImage.png'}
                       alt={product.nome}
                       width={40}
                       height={40}

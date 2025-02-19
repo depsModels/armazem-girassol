@@ -23,7 +23,7 @@
   animation: slideIn 0.3s ease;
   border-radius: 1.5rem 0 0 1.5rem;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -85,10 +85,11 @@
 }
 
 .cartItems {
-  flex-grow: 1;
+  flex: 1;
   overflow-y: auto;
   margin-top: 1.5rem;
   padding-right: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .cartItem {
@@ -181,4 +182,12 @@
   color: #777;
   margin-top: 2rem;
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cartContainer {
+    width: 100%;
+    border-radius: 0;
+    padding: 1.5rem;
+  }
 }

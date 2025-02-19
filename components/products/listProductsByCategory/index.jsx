@@ -11,31 +11,40 @@ export default function ListProductsByCategory() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchProducts() {
+    const fetchProducts = async () => {
       try {
-        console.log('Iniciando busca de produtos...');
+        setIsLoading(true);
         const response = await fetch('/api/products/categories');
-        console.log('Status da resposta:', response.status);
         if (!response.ok) {
           const errorText = await response.text();
-          console.error('Erro na resposta:', errorText);
           throw new Error(`Failed to fetch products: ${response.status} ${errorText}`);
         }
         const data = await response.json();
-        console.log('Dados recebidos:', data);
-        setGroupedProducts(data);
+        
+        // Filtrar categorias sem produtos disponíveis
+        const filteredData = Object.fromEntries(
+          Object.entries(data).filter(([_, category]) => 
+            category.produtos.some(product => product.quantidade > 0)
+          )
+        );
+        
+        setGroupedProducts(filteredData);
       } catch (error) {
         console.error('Error loading products:', error);
       } finally {
         setIsLoading(false);
       }
-    }
+    };
 
     fetchProducts();
   }, []);
 
   if (isLoading) {
     return <div className={styles.loading}>Carregando produtos...</div>;
+  }
+
+  if (Object.keys(groupedProducts).length === 0) {
+    return <div className={styles.noProducts}>Nenhum produto disponível no momento.</div>;
   }
 
   return (

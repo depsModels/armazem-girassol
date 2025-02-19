@@ -56,6 +56,9 @@
   padding: 0.5rem;
   transition: transform 0.3s ease;
   z-index: 1001;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
 }
 
 .menuButton:hover {

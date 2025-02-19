@@ -23,8 +23,12 @@ export async function GET(request) {
 
     // Adicionar imagem padrão se necessário
     const productsWithImages = products.map(product => ({
-      ...product,
-      imagem: product.imagem || '/noImage.png'
+      id: product.id,
+      nome: product.nome,
+      preco: product.preco,
+      imagem: product.imagem || '/assets/images/noImage.png',
+      codigo_produto: product.codigo_produto,
+      unidade_medida: product.unidade_medida
     }));
 
     return NextResponse.json(productsWithImages);

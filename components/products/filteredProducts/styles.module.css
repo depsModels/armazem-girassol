@@ -68,9 +68,11 @@
 .searchInfo {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  background: rgba(5, 96, 60, 0.1);
-  border-radius: 0.25rem;
+  background-color: rgba(5, 96, 60, 0.05);
+  border-radius: 0.5rem;
   color: #05603c;
+  text-align: center;
+  font-weight: 600;
 }
 
 .sidebar {

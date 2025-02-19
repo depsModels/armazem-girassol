@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 export default function AboutPage() {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5500000000000', '_blank');
+    window.open('https://wa.me/5551997572837', '_blank');
   };
 
   return (
