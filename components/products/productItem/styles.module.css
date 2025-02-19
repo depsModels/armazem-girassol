@@ -117,33 +117,18 @@
   text-align: center;
 }
 
-.price {
-  font-weight: 700;
-  color: #05603c;
-  font-size: 1.1rem;
-  text-align: center;
-  margin: 0.5rem 0;
-}
-
-.unit {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 0.25rem;
-}
-
 .quantityWrapper {
   position: relative;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  height: 2.5rem;
 }
 
 .quantityInput {
   width: 100%;
-  padding: 0.75rem 1.5rem;
+  height: 100%;
+  padding: 0 2rem;
   font-size: 1rem;
   border: 2px solid rgba(5, 96, 60, 0.2);
   border-radius: 0.5rem;
@@ -175,7 +160,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
   z-index: 2;
 }
 
@@ -189,7 +173,104 @@
 
 .quantityButton:hover {
   color: #044d31;
-  opacity: 1;
+}
+
+.addToCartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #05603c 0%, #067a4d 100%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.addToCartButton:hover {
+  background: linear-gradient(135deg, #044d31 0%, #056b43 100%);
+}
+
+.addToCartButton:hover .icon {
+  transform: rotate(-8deg);
+}
+
+.product:hover .icon {
+  transform: rotate(-8deg);
+}
+
+.addToCartButton.disabled {
+  background: linear-gradient(135deg, #8c8c8c 0%, #a3a3a3 100%);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.addToCartButton.disabled:hover {
+  background: linear-gradient(135deg, #8c8c8c 0%, #a3a3a3 100%);
+  transform: none;
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.quantityButton svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .quantityWrapper {
+    width: 65%;
+  }
+
+  .addToCartButton {
+    width: 35%;
+    padding: 0;
+  }
+
+  .buttonText {
+    display: none;
+  }
+
+  .icon {
+    margin: 0;
+  }
+}
+
+.price {
+  font-weight: 700;
+  color: #05603c;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.unit {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.outOfStock .image {
+  opacity: 0.7;
+  filter: grayscale(30%);
 }
 
 .buyButton {
@@ -208,56 +289,8 @@
   transition: background-color 0.3s ease;
 }
 
-.icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.product:hover .icon {
-  transform: rotate(15deg);
-}
-
 .buyButton:hover {
   background-color: #044d31;
-}
-
-.buyButton:hover .icon {
-  transform: rotate(5deg) translateY(2px);
-}
-
-.addToCartButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.75rem 0.75rem;
-  background: linear-gradient(135deg, #05603c 0%, #067a4d 100%);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.addToCartButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.addToCartButton:hover::before {
-  opacity: 1;
 }
 
 .cartIcon {
@@ -265,67 +298,14 @@
   transition: transform 0.3s ease;
 }
 
-.addToCartButton:hover .cartIcon {
-  transform: rotate(-10deg);
-}
-
-.buttonText {
-  transition: opacity 0.3s ease;
-}
-
-.addToCartButton.disabled {
-  background: linear-gradient(135deg, #8c8c8c 0%, #a3a3a3 100%);
-  cursor: not-allowed;
-  opacity: 0.8;
-}
-
-.addToCartButton.disabled:hover {
-  background: linear-gradient(135deg, #8c8c8c 0%, #a3a3a3 100%);
-  transform: none;
-}
-
-.outOfStock .image {
-  opacity: 0.7;
-  filter: grayscale(30%);
-}
-
-.quantityButton svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-@media (max-width: 768px) {
-  .product {
-    margin: 1rem auto;
-  }
-  
-
-
-  .image {
-    width: 100%;
-    height: 100%;
-  }
-
-  .title {
-    font-size: 1rem;
-  }
-
-  .description {
-    font-size: 0.9rem;
-  }
-
-  .buttonText {
-    display: none;
-  }
-
-  .addToCartButton {
-    padding: 0.75rem;
-  }
-  
-  .icon {
-    margin: 0;
-  }
-}
+.product:nth-child(1) { animation-delay: 0.1s; }
+.product:nth-child(2) { animation-delay: 0.2s; }
+.product:nth-child(3) { animation-delay: 0.3s; }
+.product:nth-child(4) { animation-delay: 0.4s; }
+.product:nth-child(5) { animation-delay: 0.5s; }
+.product:nth-child(6) { animation-delay: 0.6s; }
+.product:nth-child(7) { animation-delay: 0.7s; }
+.product:nth-child(8) { animation-delay: 0.8s; }
 
 @keyframes fadeInUp {
   from {
@@ -337,15 +317,6 @@
     transform: translateY(0);
   }
 }
-
-.product:nth-child(1) { animation-delay: 0.1s; }
-.product:nth-child(2) { animation-delay: 0.2s; }
-.product:nth-child(3) { animation-delay: 0.3s; }
-.product:nth-child(4) { animation-delay: 0.4s; }
-.product:nth-child(5) { animation-delay: 0.5s; }
-.product:nth-child(6) { animation-delay: 0.6s; }
-.product:nth-child(7) { animation-delay: 0.7s; }
-.product:nth-child(8) { animation-delay: 0.8s; }
 
 @keyframes scaleIn {
   from {
