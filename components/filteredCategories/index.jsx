@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './styles.module.css';
-import { capitalizeWords } from '@/lib/formatText';
+import { capitalizeWords } from '@/utils/formatText';
 
 export default function FilteredCategories({ categories, selectedCategories, onCategoryChange }) {
   return (

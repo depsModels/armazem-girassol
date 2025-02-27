@@ -1,9 +1,15 @@
-'use client';
-import { FiX } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
-import styles from './styles.module.css';
+"use client";
+import { FiX } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import styles from "./styles.module.css";
 
-export default function ConfirmationModal({ onClose, onConfirm, orderDetails, totalPrice, deliveryFee }) {
+export default function ConfirmationModal({
+  onClose,
+  onConfirm,
+  orderDetails,
+  totalPrice,
+  deliveryFee,
+}) {
   if (!orderDetails) return null;
 
   return (
@@ -11,10 +17,10 @@ export default function ConfirmationModal({ onClose, onConfirm, orderDetails, to
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h2>Confirmar Pedido</h2>
-          <button 
+          <button
             type="button"
-            aria-label="Fechar modal de confirmação" 
-            className={styles.closeButton} 
+            aria-label="Fechar modal de confirmação"
+            className={styles.closeButton}
             onClick={onClose}
           >
             <FiX />
@@ -26,7 +32,10 @@ export default function ConfirmationModal({ onClose, onConfirm, orderDetails, to
           <div className={styles.productList}>
             {orderDetails.products.map((item, index) => (
               <div key={index} className={styles.productItem}>
-                <span>{item.quantity}{item.unit} - {item.name}</span>
+                <span>
+                  {item.quantity} {item.unit === "KG" ? "g" : "UN"}{" "}
+                  - {item.name}
+                </span>
                 <span>R$ {item.total.toFixed(2)}</span>
               </div>
             ))}
@@ -46,31 +55,46 @@ export default function ConfirmationModal({ onClose, onConfirm, orderDetails, to
 
           <div className={styles.customerInfo}>
             <h3>Dados do Pedido:</h3>
-            <p><strong>Nome:</strong> {orderDetails.name}</p>
-            {orderDetails.deliveryOption === 'frete' ? (
+            <p>
+              <strong>Nome:</strong> {orderDetails.name}
+            </p>
+            {orderDetails.deliveryOption === "frete" ? (
               <>
-                <p><strong>Endereço:</strong> {orderDetails.address}</p>
-                <p><strong>Bairro:</strong> {orderDetails.neighborhood}</p>
-                <p><strong>Cidade:</strong> {orderDetails.city === 'charqueadas' ? 'Charqueadas' : 'São Jerônimo'}</p>
+                <p>
+                  <strong>Endereço:</strong> {orderDetails.address}
+                </p>
+                <p>
+                  <strong>Bairro:</strong> {orderDetails.neighborhood}
+                </p>
+                <p>
+                  <strong>Cidade:</strong>{" "}
+                  {orderDetails.city === "charqueadas"
+                    ? "Charqueadas"
+                    : "São Jerônimo"}
+                </p>
               </>
             ) : (
-              <p><strong>Retirada:</strong> No local</p>
+              <p>
+                <strong>Retirada:</strong> No local
+              </p>
             )}
-            <p><strong>Pagamento:</strong> {orderDetails.paymentMethod}</p>
+            <p>
+              <strong>Pagamento:</strong> {orderDetails.paymentMethod}
+            </p>
           </div>
         </div>
 
         <div className={styles.modalFooter}>
-          <button 
-            type="button" 
-            className={styles.cancelButton} 
+          <button
+            type="button"
+            className={styles.cancelButton}
             onClick={onClose}
           >
             Cancelar
           </button>
-          <button 
-            type="button" 
-            className={styles.confirmButton} 
+          <button
+            type="button"
+            className={styles.confirmButton}
             onClick={onConfirm}
           >
             <FaWhatsapp />

@@ -1,3 +1,6 @@
+// Atualizando os caminhos para a nova localização
+import { formatText } from '../utils/formatText';
+
 export function capitalizeWords(text) {
   if (!text) return '';
   return text

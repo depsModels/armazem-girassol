@@ -5,38 +5,40 @@ import styles from './styles.module.css';
 import { FiShoppingCart } from 'react-icons/fi';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { capitalizeWords } from '@/lib/formatText';
+import { capitalizeWords } from '@/utils/formatText';
 
 export default function ProductDetail({ product }) {
   const imageSrc = product.imagem || '/assets/images/noImage.png';
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(
-    product.unidadeMedida === 'KG' ? 10 : 1
+    product.unidade_medida === 'KG' ? 100 : 1
   );
 
   const handleQuantityChange = (e) => {
-    const value = product.unidadeMedida === 'KG' 
-      ? Math.max(10, Math.ceil(Number(e.target.value) / 10) * 10)
-      : Math.max(1, Number(e.target.value));
+    const value = Math.max(10, Math.ceil(Number(e.target.value) / 10) * 10); 
     setQuantity(value);
   };
 
   const handleIncrement = () => {
-    const step = product.unidadeMedida === 'KG' ? 10 : 1;
+    const step = product.unidade_medida === 'KG' ? 10 : 1;
     setQuantity(prev => prev + step);
   };
 
   const handleDecrement = () => {
-    const step = product.unidadeMedida === 'KG' ? 10 : 1;
-    const minValue = product.unidadeMedida === 'KG' ? 10 : 1;
+    const step = product.unidade_medida === 'KG' ? 10 : 1;
+    const minValue = product.unidade_medida === 'KG' ? 10 : 1;
     setQuantity(prev => Math.max(minValue, prev - step));
   };
 
-  const totalPrice = product.unidadeMedida === 'KG'
+  const pricePer100g = product.unidade_medida === 'KG' 
+    ? (product.preco / 10).toFixed(2) 
+    : product.preco.toFixed(2);
+
+  const totalPrice = product.unidade_medida === 'KG'
     ? ((product.preco / 1000) * quantity).toFixed(2)
     : (product.preco * quantity).toFixed(2);
 
-  const unitLabel = product.unidadeMedida === 'KG' ? `${quantity}g` : `${quantity} UN`;
+  const unitLabel = product.unidade_medida === 'KG' ? `${quantity}g` : `${quantity} UN`;
 
   // Verificar se o produto está disponível
   const isAvailable = product.quantidade > 0;
@@ -70,12 +72,10 @@ export default function ProductDetail({ product }) {
               {product.descricao}
             </p>
 
-
-              <span className={styles.productPrice}>
-                R$ {product.preco.toFixed(2)}
-                <span className={styles.unitLabel}>/{product.unidadeMedida === 'KG' ? '100g' : 'UN'}</span>
-              </span>
-
+            <span className={styles.productPrice}>
+              R$ {pricePer100g}
+              <span className={styles.unitLabel}>/{product.unidade_medida === 'KG' ? '100g' : 'UN'}</span>
+            </span>
 
             {isAvailable ? (
               <div className={styles.purchaseSection}>
@@ -88,8 +88,8 @@ export default function ProductDetail({ product }) {
                   </button>
                   <input
                     type="number"
-                    min={product.unidadeMedida === 'KG' ? "10" : "1"}
-                    step={product.unidadeMedida === 'KG' ? "10" : "1"}
+                    min={product.unidade_medida === 'KG' ? "10" : "1"}
+                    step={product.unidade_medida === 'KG' ? "10" : "1"}
                     value={quantity}
                     onChange={handleQuantityChange}
                     className={styles.quantityInput}
@@ -114,7 +114,7 @@ export default function ProductDetail({ product }) {
                     name: product.nome,
                     price: product.preco,
                     quantity: quantity,
-                    unit: product.unidadeMedida
+                    unit: product.unidade_medida
                   })}
                   className={styles.buyButton}
                 >

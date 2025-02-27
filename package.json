@@ -19,21 +19,21 @@
       "email": "elano.tavares.ncs@gmail.com",
       "homepage": "https://depsmodels.com",
       "role": "Developer"
-  },
-  {
+    },
+    {
       "name": "Miguel Leonardo Strapazon Lewandowski",
       "email": "miguelstrapazonl@gmail.com",
       "homepage": "https://depsmodels.com",
       "role": "Developer"
-  },
-  {
+    },
+    {
       "name": "Raul Lize Teixeira",
       "email": "raullizeteixeira@gmail.com",
       "homepage": "https://depsmodels.com",
       "role": "Developer"
-  }
-],
-"scripts": {
+    }
+  ],
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
-import { capitalizeWords } from '@/lib/formatText';
+import { capitalizeWords } from '@/utils/formatText';
 
 export default function ProductItem({ nome, id, image, preco, unidade_medida, quantidade }) {
   const imageSrc = image || '/assets/images/noImage.png';
@@ -51,7 +51,7 @@ export default function ProductItem({ nome, id, image, preco, unidade_medida, qu
     unit: unidade_medida 
   };
 
-  const isOutOfStock = quantidade === 0;
+  const isOutOfStock = +quantidade === 0;
 
   return (
     <article className={`${styles.product} ${isOutOfStock ? styles.outOfStock : ''}`}>
@@ -103,7 +103,7 @@ export default function ProductItem({ nome, id, image, preco, unidade_medida, qu
           >
             {isOutOfStock ? (
               <>
-                <Ban className={styles.icon} />
+                <Ban size={32} className={styles.icon} />
                 <span className={styles.buttonText}>Indisponível</span>
               </>
             ) : (

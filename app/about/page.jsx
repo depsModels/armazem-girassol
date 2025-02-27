@@ -1,12 +1,18 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { FaWhatsapp, FaLeaf, FaHistory, FaBullseye, FaStore } from 'react-icons/fa';
-import styles from './styles.module.css';
+import Image from "next/image";
+import {
+  FaWhatsapp,
+  FaLeaf,
+  FaHistory,
+  FaBullseye,
+  FaStore,
+} from "react-icons/fa";
+import styles from "./styles.module.css";
 
 export default function AboutPage() {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5551997572837', '_blank');
+    window.open("https://wa.me/5551997572837", "_blank");
   };
 
   return (
@@ -23,7 +29,9 @@ export default function AboutPage() {
           />
           <div className={styles.heroOverlay}>
             <h1 className={styles.heroTitle}>Armazém Girassol</h1>
-            <p className={styles.heroSubtitle}>Cultivando saúde e bem-estar para a comunidade</p>
+            <p className={styles.heroSubtitle}>
+              Cultivando saúde e bem-estar para a comunidade
+            </p>
           </div>
         </div>
       </section>
@@ -44,8 +52,11 @@ export default function AboutPage() {
             <div className={styles.timelineContent}>
               <h3>Nossa História</h3>
               <p>
-                O Armazém Girassol nasceu do sonho de oferecer produtos de qualidade a preços justos para nossa comunidade. 
-                Com anos de experiência no mercado, nos especializamos em produtos naturais, grãos, cereais e produtos a granel.
+                Era uma vez, em uma cidade acolhedora, uma família dedicada a
+                promover a saúde e o bem estar de todos. Inspirados pelo desejo
+                de transformar vidas, eles começaram a trabalhar juntos em um
+                projeto que oferecia cuidados de saúde alimentar e programas de
+                bem estar. Surgindo assim o armazém girassol
               </p>
             </div>
           </div>
@@ -57,8 +68,9 @@ export default function AboutPage() {
             <div className={styles.timelineContent}>
               <h3>Nossa Missão</h3>
               <p>
-                Proporcionar aos nossos clientes uma experiência única de compra, oferecendo produtos selecionados, 
-                atendimento personalizado e preços competitivos.
+                Proporcionar aos nossos clientes uma experiência única de
+                compra, oferecendo produtos selecionados, atendimento
+                personalizado e preços competitivos.
               </p>
             </div>
           </div>
@@ -70,8 +82,9 @@ export default function AboutPage() {
             <div className={styles.timelineContent}>
               <h3>Nossos Valores</h3>
               <p>
-                Comprometimento com a qualidade, respeito ao meio ambiente e valorização da saúde e bem-estar 
-                de nossos clientes são os pilares que guiam nossa atuação.
+                Comprometimento com a qualidade, respeito ao meio ambiente e
+                valorização da saúde e bem-estar de nossos clientes são os
+                pilares que guiam nossa atuação.
               </p>
             </div>
           </div>
@@ -83,11 +96,15 @@ export default function AboutPage() {
             <div className={styles.timelineContent}>
               <h3>Venha nos Conhecer</h3>
               <p>
-                Estamos prontos para recebê-lo em nossa loja com um ambiente acolhedor e produtos selecionados 
-                especialmente para você. Tire suas dúvidas, faça seu pedido ou agende uma visita!
+                Estamos prontos para recebê-lo em nossa loja com um ambiente
+                acolhedor e produtos selecionados especialmente para você. Tire
+                suas dúvidas, faça seu pedido ou agende uma visita!
               </p>
-              <button onClick={handleWhatsAppClick} className={styles.timelineButton}>
-                <FaWhatsapp size={20} style={{ marginRight: '8px' }} />
+              <button
+                onClick={handleWhatsAppClick}
+                className={styles.timelineButton}
+              >
+                <FaWhatsapp size={20} style={{ marginRight: "8px" }} />
                 Fale Conosco no WhatsApp
               </button>
             </div>

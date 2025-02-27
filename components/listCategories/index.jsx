@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
-import { capitalizeWords } from '@/lib/formatText';
+import { capitalizeWords } from '@/utils/formatText';
 
 export default function ListCategories({ categories }) {
   const router = useRouter();
