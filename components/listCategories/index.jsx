@@ -27,7 +27,7 @@ export default function ListCategories({ categories }) {
         ))}
         {shouldShowViewMore && (
           <li>
-            <Link href="/products" className={styles.viewMore}>
+            <Link href="/products">
               <span>Ver Mais</span>
             </Link>
           </li>

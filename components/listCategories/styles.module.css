@@ -20,12 +20,14 @@
 
 .categoriesList {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   font-size: 1rem;
   justify-content: center;
   align-items: center;
   color: #05603c;
   list-style: none;
+  white-space: nowrap;
+
   margin: 0;
   padding: 0;
 }
@@ -70,40 +72,5 @@
 }
 
 .categoriesList li a:hover::before {
-  transform: scaleX(1);
-}
-
-.viewMore {
-  color: rgba(5, 96, 60, 0.9) !important;
-  font-weight: 600 !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 20px !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
-  overflow: hidden !important;
-  letter-spacing: 0.5px !important;
-  text-decoration: none !important;
-}
-
-.viewMore:hover {
-  color: #05603c !important;
-  background-color: rgba(5, 96, 60, 0.05) !important;
-  font-weight: 700 !important;
-  transform: translateY(-3px);
-}
-
-.viewMore::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #05603c;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.viewMore:hover::before {
   transform: scaleX(1);
 }
