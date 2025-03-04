@@ -26,9 +26,10 @@ export default function Home() {
         <div className={styles.headerContent}>
           <div className={styles.hero}>
             <h1 className={styles.title}>
-              Bem-estar natural<br></br> para sua vida
+
+            O a granel mais queridinho da região.
             </h1>
-            <p>Escolha saúde com nossos produtos naturais.</p>
+            <p>De um giro na sua vida com os  produtos do Armazem Girassol.</p>
           </div>
           <button className={styles.cta}>
             <Link href="/products">Conheça nossos produtos!</Link>

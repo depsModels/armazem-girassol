@@ -56,9 +56,6 @@
   padding: 0.5rem;
   transition: transform 0.3s ease;
   z-index: 1001;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
 }
 
 .menuButton:hover {
@@ -140,6 +137,16 @@
 
   .nav a::after {
     height: 1px;
+  }
+}
+
+@media(max-width: 770px){
+  .menuButton {
+
+    position: fixed;
+    top: 1.6rem;
+    right: 1rem;
+
   }
 }
 
