@@ -60,6 +60,10 @@ export default function RootLayout({ children }) {
         <meta property="og:locale" content="pt_BR" />
         <link rel="canonical" href="https://www.armazemgirassol.com.br" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* Script do ahrefs para verificar SEO */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="QhqewT5du5qmo+qCFSPa2A" async></script>
+        {/* Script para verificar com google search console */}
+        <meta name="google-site-verification" content="L256Y_zlY7fjeIPjXNWs1OLhZNjPK_xykZmGaxr_VI0" />
       </head>
       <body>
         <CartProvider>
